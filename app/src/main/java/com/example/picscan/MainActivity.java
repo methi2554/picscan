@@ -75,14 +75,12 @@ public class MainActivity extends AppCompatActivity {
         //storage permission
         storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+        textToSpeech = new TextToSpeech(MainActivity.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-
                 if(status != TextToSpeech.ERROR ){
-
-                    btn.setEnabled(status == TextToSpeech.SUCCESS);
                     textToSpeech.setLanguage(Locale.UK);
+
                 }
             }
         });
