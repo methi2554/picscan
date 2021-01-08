@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     EditText mResultEt;
     ImageView mPreviewIv;
     Button btn;
+    ImageButton tts;
+    ImageButton stt;
     TextToSpeech textToSpeech;
     TextView mtextTv;
     ImageButton mmicBtn;
@@ -63,11 +65,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setSubtitle("Click + button to insert image");
-
+        tts = findViewById(R.id.tts);
+        stt = findViewById(R.id.stt);
+        mResultEt = findViewById(R.id.resultEt);
         mResultEt = findViewById(R.id.resultEt);
         mPreviewIv = findViewById(R.id.imageIv);
-        mmicBtn=findViewById(R.id.micBtn);
-        mtextTv=findViewById(R.id.textTv);
+     //   mmicBtn=findViewById(R.id.micBtn);
+     //   mtextTv=findViewById(R.id.textTv);
         btn = findViewById(R.id.btn);
 
         //camera permission
@@ -91,6 +95,18 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, text1, Toast.LENGTH_SHORT).show();
                 textToSpeech.speak(text1,TextToSpeech.QUEUE_FLUSH,null);
 
+            }
+        });
+        tts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+            }
+        });
+        stt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SpeechActivity.class));
             }
         });
         mmicBtn.setOnClickListener(new View.OnClickListener() {
