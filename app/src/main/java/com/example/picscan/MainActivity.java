@@ -16,7 +16,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 
 import android.speech.RecognizerIntent;
@@ -100,13 +99,13 @@ public class MainActivity extends AppCompatActivity {
         tts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                startActivity(new Intent(MainActivity.this, TextToSpeechActivity.class));
             }
         });
         stt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SpeechActivity.class));
+                startActivity(new Intent(MainActivity.this, SpeechToTextActivity.class));
             }
         });
         mmicBtn.setOnClickListener(new View.OnClickListener() {
