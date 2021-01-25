@@ -1,83 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondActivity">
+    tools:context=".TextToSpeechActivity">
 
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bacg2">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bacg2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</ImageView>
+    </ImageView>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        android:paddingTop="100dp">
+        android:paddingTop="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="ResultText"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="20sp" />
+
         <EditText
             android:id="@+id/resultEt"
-            android:hint="Click + button to add image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:autoLink="all"
             android:background="@null"
+            android:hint="Click + button to add image"
             android:padding="5dp"
-            android:textColor="#000"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textColor="#000" />
 
         <Button
             android:id="@+id/btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="speech" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COPY TEXT TO CLIP BOARD"
+            android:id="@+id/copyText"/>
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="250dp">
+        android:paddingTop="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView">
+
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Image Preview"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="20sp" />
+
         <ImageView
             android:id="@+id/imageIv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxHeight="250dp"
-            />
+            android:maxHeight="250dp" />
 
 
     </LinearLayout>
-
-
-    <Button
-        android:paddingTop="10sp"
-        android:id="@+id/backbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="13dp"
-        android:textColor="#FFFF"
-        android:background="@drawable/custom_button"
-
-        >
-    </Button>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
