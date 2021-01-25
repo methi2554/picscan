@@ -51,6 +51,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="speech" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COPY TEXT TO CLIP BOARD"
+            android:id="@+id/copyText"/>
     </LinearLayout>
 
     <LinearLayout
