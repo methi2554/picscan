@@ -4,7 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SpeechToTextActivity">
+    tools:context=".MainActivity2">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewbackground"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewbackground"
+        app:layout_constraintStart_toStartOf="@+id/imageViewbackground"
+        app:layout_constraintTop_toTopOf="@+id/imageViewbackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
     <ImageView
         android:id="@+id/imageViewbackground"
@@ -20,8 +35,8 @@
 
     </ImageView>
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/micBtn"
         android:layout_width="232dp"
         android:layout_height="191dp"
         android:layout_marginTop="60dp"
@@ -29,13 +44,14 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewbackground"
-        app:srcCompat="@drawable/ic_mic" />
+        app:civ_border_width="3dp"
+        app:civ_border_color="#0984e3"
+        android:src="@drawable/mic1" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:text="Result"
         android:textColor="#d35400"
         android:textSize="20dp"
@@ -45,19 +61,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-    <TextView
+    <EditText
         android:id="@+id/textTv"
-        android:layout_width="360dp"
-        android:layout_height="212dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="387dp"
+        android:layout_height="99dp"
         android:background="#ecf0f1"
         android:hint="Press mic to record"
         android:textColor="#000"
-        android:textSize="18dp"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/micBtn" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -69,21 +85,23 @@
         app:layout_constraintStart_toStartOf="@+id/imageViewbackground"
         app:layout_constraintTop_toBottomOf="@+id/textTv">
 
-        <ImageButton
-            android:id="@+id/imageButton7"
-            android:layout_width="wrap_content"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/deletebtn"
+            android:layout_width="20dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="#19b5fe"
-            app:srcCompat="@android:drawable/ic_menu_save" />
+            android:background="@drawable/delete" />
 
-        <ImageButton
-            android:id="@+id/micBtn"
-            android:layout_width="wrap_content"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/copybtn"
+            android:layout_width="21dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="#3a539b"
-            app:srcCompat="@drawable/ic_mic" />
+            app:civ_border_width="3dp"
+            app:civ_border_color="@color/black"
+            app:civ_circle_background_color="@color/black"
+            android:background="@drawable/save"/>
+
 
     </LinearLayout>
 

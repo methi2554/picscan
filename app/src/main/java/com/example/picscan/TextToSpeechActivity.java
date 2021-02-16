@@ -10,9 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.provider.MediaStore;
-import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.util.SparseArray;
 import android.view.Menu;
@@ -20,9 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -53,10 +49,9 @@ public class TextToSpeechActivity extends AppCompatActivity {
     EditText mResultEt;
     ImageView mPreviewIv;
     Button btn;
-    Button copybtn;
+    ImageView copytext;
+    ImageView deletetext;
     TextToSpeech textToSpeech;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +63,8 @@ public class TextToSpeechActivity extends AppCompatActivity {
         mResultEt = findViewById(R.id.resultEt);
         mPreviewIv = findViewById(R.id.imageIv);
         btn = findViewById(R.id.btn);
-        copybtn = findViewById(R.id.copyText);
+        copytext = findViewById(R.id.copybtn);
+        deletetext = findViewById(R.id.deletebtn);
 
         //camera permission
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE };
@@ -94,7 +90,7 @@ public class TextToSpeechActivity extends AppCompatActivity {
             }
         });
 
-        copybtn.setOnClickListener(new View.OnClickListener() {
+        copytext.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
@@ -106,11 +102,22 @@ public class TextToSpeechActivity extends AppCompatActivity {
                 Toast.makeText(TextToSpeechActivity.this, "copied", Toast.LENGTH_SHORT).show();
                 Toast.makeText(TextToSpeechActivity.this, getstring, Toast.LENGTH_SHORT).show();
                 //Help to continue :)
-
             }
         });
 
+        deletetext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Text = mResultEt.getText().toString();
+                if(Text.isEmpty()){
+                    Toast.makeText(TextToSpeechActivity.this, "Already Empty", Toast.LENGTH_SHORT).show();
 
+                }
+                else {
+                    mResultEt.setText(" ");
+                }
+            }
+        });
     }
 
     @Override
@@ -118,10 +125,8 @@ public class TextToSpeechActivity extends AppCompatActivity {
         if(textToSpeech != null){
             textToSpeech.stop();
             textToSpeech.shutdown();
-
         }
         super.onPause();
-
     }
 
     //action bar menu
