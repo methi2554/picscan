@@ -4,85 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TextToSpeechActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/bacg2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ImageView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:paddingTop="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ResultText"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/resultEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autoLink="all"
-            android:background="@null"
-            android:hint="Click + button to add image"
-            android:padding="5dp"
-            android:textColor="#000" />
-
-        <Button
-            android:id="@+id/btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="speech" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="COPY TEXT TO CLIP BOARD"
-            android:id="@+id/copyText"/>
-    </LinearLayout>
+    tools:context=".TextToSpeechActivity"
+    android:background="@drawable/bluesolid">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="388dp"
+        android:layout_height="243dp"
         android:orientation="vertical"
-        android:paddingTop="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/textView5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Image Preview"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:layout_height="59dp"
+            android:gravity="center"
+            android:text="TextToSpeech" />
 
         <ImageView
             android:id="@+id/imageIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxHeight="250dp" />
-
-
+            android:layout_width="236dp"
+            android:layout_height="164dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ph" />
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/resultEt"
+        android:layout_width="371dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="24dp"
+        android:hint="Insert Text Here or Insert From Photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="376dp"
+        android:layout_height="49dp"
+        android:text="Speak"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultEt" />
+
+    <LinearLayout
+        android:layout_width="366dp"
+        android:layout_height="151dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn"
+        app:layout_constraintVertical_bias="0.226">
+
+        <ImageView
+            android:id="@+id/deletebtn"
+            android:layout_width="191dp"
+            android:layout_height="111dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/delete" />
+
+        <ImageView
+            android:id="@+id/copybtn"
+            android:layout_width="192dp"
+            android:layout_height="112dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/save" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
