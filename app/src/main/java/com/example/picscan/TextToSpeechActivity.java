@@ -305,6 +305,7 @@ public class TextToSpeechActivity extends AppCompatActivity {
                     SparseArray<TextBlock> items = recognizer.detect(frame);
                     StringBuilder sb = new StringBuilder();
                     //get text from sb untill there is no text
+                    //tts function
                     for(int i = 0; i<items.size(); i++) {
                         TextBlock myItem = items.valueAt(i);
                         sb.append(myItem.getValue());
