@@ -27,6 +27,7 @@ public class MainActivity2 extends AppCompatActivity {
     ImageView mmicBtn;
     ImageView copytext;
     ImageView deletetext;
+    Button listdata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
         mtextTv=findViewById(R.id.textTv);
         copytext = findViewById(R.id.copybtn);
         deletetext = findViewById(R.id.deletebtn);
+        listdata = findViewById(R.id.listdata);
 
         mmicBtn.setOnClickListener( new View.OnClickListener() {
             @Override

@@ -6,26 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewbackground"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewbackground"
-        app:layout_constraintStart_toStartOf="@+id/imageViewbackground"
-        app:layout_constraintTop_toTopOf="@+id/imageViewbackground">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
     <ImageView
         android:id="@+id/imageViewbackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/lightpurplegradient"
+        android:background="@drawable/bluesolid"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,55 +20,53 @@
 
     </ImageView>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/micBtn"
-        android:layout_width="232dp"
-        android:layout_height="191dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewbackground"
-        app:civ_border_width="3dp"
-        app:civ_border_color="#0984e3"
-        android:src="@drawable/mic1" />
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="390dp"
+        android:layout_height="433dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewbackground"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="@+id/imageViewbackground"
+        app:layout_constraintTop_toTopOf="@+id/imageViewbackground">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Result"
-        android:textColor="#d35400"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textTv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/micBtn"
+            android:layout_width="232dp"
+            android:layout_height="191dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/mic1"
+            app:civ_border_color="#0984e3"
+            app:civ_border_width="3dp" />
 
-    <EditText
-        android:id="@+id/textTv"
-        android:layout_width="387dp"
-        android:layout_height="99dp"
-        android:background="#ecf0f1"
-        android:hint="Press mic to record"
-        android:textColor="#000"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/micBtn" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Result"
+            android:textColor="#d35400"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/textTv"
+            android:layout_width="387dp"
+            android:layout_height="99dp"
+            android:background="#ecf0f1"
+            android:hint="Press mic to record"
+            android:textColor="#000"
+            android:textSize="16dp" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="349dp"
-        android:layout_height="164dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="344dp"
+        android:layout_height="121dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/imageViewbackground"
         app:layout_constraintStart_toStartOf="@+id/imageViewbackground"
-        app:layout_constraintTop_toBottomOf="@+id/textTv">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/deletebtn"
@@ -97,12 +80,30 @@
             android:layout_width="21dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            app:civ_border_width="3dp"
+            android:background="@drawable/save"
             app:civ_border_color="@color/black"
-            app:civ_circle_background_color="@color/black"
-            android:background="@drawable/save"/>
+            app:civ_border_width="3dp"
+            app:civ_circle_background_color="@color/black" />
 
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="416dp"
+        android:layout_height="147dp"
+        android:layout_marginTop="4dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewbackground"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageViewbackground"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <Button
+            android:id="@+id/listdata"
+            android:layout_width="310dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="List Data" />
     </LinearLayout>
 
 

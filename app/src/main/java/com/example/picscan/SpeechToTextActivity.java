@@ -21,7 +21,7 @@ public class SpeechToTextActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_speechtotext);
+        setContentView(R.layout.activity_texttospeech);
         mmicBtn=findViewById(R.id.micBtn);
         mtextTv=findViewById(R.id.textTv);
 
