@@ -35,6 +35,7 @@ import com.google.android.gms.vision.text.TextRecognizer;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -48,10 +49,12 @@ public class TextToSpeechActivity extends AppCompatActivity {
     Uri image_uri;
     EditText mResultEt;
     ImageView mPreviewIv;
-    Button btn;
+    Button btn , listdata, adddata;
     ImageView copytext;
     ImageView deletetext;
     TextToSpeech textToSpeech;
+
+    public static SQLiteHelper sqLiteHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,12 @@ public class TextToSpeechActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         copytext = findViewById(R.id.copybtn);
         deletetext = findViewById(R.id.deletebtn);
+        listdata = findViewById(R.id.listdata);
+        adddata = findViewById(R.id.adddata);
+
+        sqLiteHelper = new SQLiteHelper(this , "ttstextDB.sqlite" , null , 1);
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS SCAN (Id INTEGER PRIMARY KEY AUTOINCREMENT , ttstext VARCHAR , stttext VARCHAR , image BLOG)");
+
 
         //camera permission
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE };
@@ -118,7 +127,44 @@ public class TextToSpeechActivity extends AppCompatActivity {
                 }
             }
         });
+
+        adddata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    sqLiteHelper.insertData(
+                            mResultEt.getText().toString().trim(),
+                            imageViewToByte(mPreviewIv)
+                    );
+                    Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_SHORT).show();
+                    mResultEt.setText("");
+                    mPreviewIv.setImageResource(R.mipmap.ic_launcher);
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        listdata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TextToSpeechActivity.this, ScanList.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+    public static byte[] imageViewToByte(ImageView mPreviewIv) {
+        Bitmap bitmap = ((BitmapDrawable ) mPreviewIv.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG , 100 , stream);
+        byte [] byteArray = stream.toByteArray();
+        return  byteArray;
+    }
+
+
 
     @Override
     protected void onPause() {
@@ -305,6 +351,7 @@ public class TextToSpeechActivity extends AppCompatActivity {
                     SparseArray<TextBlock> items = recognizer.detect(frame);
                     StringBuilder sb = new StringBuilder();
                     //get text from sb untill there is no text
+                    //tts function
                     for(int i = 0; i<items.size(); i++) {
                         TextBlock myItem = items.valueAt(i);
                         sb.append(myItem.getValue());
