@@ -21,28 +21,29 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(sql);
     }
 
-    public void insertData(String ttstext,  byte[] image){
+    public void insertData(String ttstext, String rating , byte[] image ){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO SCAN VALUES (NULL,  ?, ?,?)";
+        String sql = "INSERT INTO SCAN VALUES (NULL,?, ?,?)";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
-
         statement.bindString(1, ttstext);
-        statement.bindBlob(2, image);
+        statement.bindString(2, rating);
+        statement.bindBlob(3, image);
 
         statement.executeInsert();
     }
 
-    public void updateData(String ttstext , byte[] image, int id) {
+    public void updateData(String ttstext , String rating , byte[] image , int id) {
         SQLiteDatabase database = getWritableDatabase();
-
-        String sql = "UPDATE SCAN SET ttstext = ?,  image = ? WHERE id = ?";
+        String sql = "UPDATE SCAN SET ttstext = ?,  rating = ? ,  image = ?  WHERE id = ?";
         SQLiteStatement statement = database.compileStatement(sql);
 
         statement.bindString(1, ttstext);
-        statement.bindBlob(2, image);
+        statement.bindString(2 ,rating);
+        statement.bindBlob(3, image);
         statement.bindDouble(3, (double)id);
+
 
         statement.execute();
         database.close();

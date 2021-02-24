@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -54,9 +55,11 @@ public class ScanList extends AppCompatActivity {
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String ttstext = cursor.getString(1);
-            byte[] image = cursor.getBlob(2);
+            String rating = cursor.getString(2);
+            byte[] image = cursor.getBlob(3);
 
-            list.add(new Scan(ttstext, image, id));
+
+            list.add(new Scan(ttstext, rating , image , id));
         }
         adapter.notifyDataSetChanged();
 
@@ -106,6 +109,7 @@ public class ScanList extends AppCompatActivity {
         dialog.setTitle("Update");
 
         imageViewScan = (ImageView) dialog.findViewById(R.id.imageIv);
+        final RatingBar rating = (RatingBar) dialog.findViewById(R.id.ratingBar);
         final EditText edtName = (EditText) dialog.findViewById(R.id.resultEt);
         Button btnUpdate = (Button) dialog.findViewById(R.id.btnUpdate);
 
@@ -134,8 +138,11 @@ public class ScanList extends AppCompatActivity {
                 try {
                     TextToSpeechActivity.sqLiteHelper.updateData(
                             edtName.getText().toString().trim(),
+                            String.valueOf(rating),
                             TextToSpeechActivity.imageViewToByte(imageViewScan),
                             position
+
+
                     );
                     dialog.dismiss();
                     Toast.makeText(getApplicationContext(), "Update successfully!!!",Toast.LENGTH_SHORT).show();
@@ -182,9 +189,11 @@ public class ScanList extends AppCompatActivity {
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String ttstext = cursor.getString(1);
+            String rating = cursor.getString(2);
             byte[] image = cursor.getBlob(3);
 
-            list.add(new Scan(ttstext, image, id));
+
+            list.add(new Scan(ttstext, rating , image , id ));
         }
         adapter.notifyDataSetChanged();
     }
