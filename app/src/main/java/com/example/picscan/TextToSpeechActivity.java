@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -53,6 +54,9 @@ public class TextToSpeechActivity extends AppCompatActivity {
     ImageView copytext;
     ImageView deletetext;
     TextToSpeech textToSpeech;
+    RatingBar ratingStar;
+    float myRating=0;
+    String ratingtext;
 
     public static SQLiteHelper sqLiteHelper;
 
@@ -70,6 +74,7 @@ public class TextToSpeechActivity extends AppCompatActivity {
         deletetext = findViewById(R.id.deletebtn);
         listdata = findViewById(R.id.listdata);
         adddata = findViewById(R.id.adddata);
+        ratingStar = findViewById(R.id.ratingBar);
 
         sqLiteHelper = new SQLiteHelper(this , "ttstextDB.sqlite" , null , 1);
         sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS SCAN (Id INTEGER PRIMARY KEY AUTOINCREMENT , ttstext VARCHAR , stttext VARCHAR , image BLOG)");
@@ -128,17 +133,53 @@ public class TextToSpeechActivity extends AppCompatActivity {
             }
         });
 
+        ratingStar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                int rating = (int) v;
+                String message = null;
+
+                myRating = ratingBar.getRating();
+                switch (rating){
+                    case 1:
+                        message = " 20% Correction  ";
+                        Toast.makeText(TextToSpeechActivity.this, "20%", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        message = " 40% Correction  ";
+                        Toast.makeText(TextToSpeechActivity.this, "40%", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        message = " 60% Correction  ";
+                        Toast.makeText(TextToSpeechActivity.this, "60%", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4:
+                        message = " 80% Correction  ";
+                        Toast.makeText(TextToSpeechActivity.this, "80%", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 5:
+                        message = " 100% Correction  ";
+                        Toast.makeText(TextToSpeechActivity.this, "100%", Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
+            }
+        });
+
         adddata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
                     sqLiteHelper.insertData(
                             mResultEt.getText().toString().trim(),
+                            ratingtext = String.valueOf(myRating),
                             imageViewToByte(mPreviewIv)
+
                     );
                     Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_SHORT).show();
                     mResultEt.setText("");
                     mPreviewIv.setImageResource(R.mipmap.ic_launcher);
+                    myRating=0;
                 }
                 catch (Exception e){
                     e.printStackTrace();

@@ -50,8 +50,8 @@
 
         <EditText
             android:id="@+id/textTv"
-            android:layout_width="387dp"
-            android:layout_height="99dp"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
             android:background="#ecf0f1"
             android:hint="Press mic to record"
             android:textColor="#000"
@@ -59,52 +59,29 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="344dp"
-        android:layout_height="121dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewbackground"
-        app:layout_constraintStart_toStartOf="@+id/imageViewbackground"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+    <ImageView
+        android:id="@+id/deletebtn"
+        android:layout_width="83dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:background="@drawable/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/deletebtn"
-            android:layout_width="20dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:background="@drawable/delete" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/copybtn"
-            android:layout_width="21dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:background="@drawable/save"
-            app:civ_border_color="@color/black"
-            app:civ_border_width="3dp"
-            app:civ_circle_background_color="@color/black" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="416dp"
-        android:layout_height="147dp"
-        android:layout_marginTop="4dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewbackground"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/imageViewbackground"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-        <Button
-            android:id="@+id/listdata"
-            android:layout_width="310dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:text="List Data" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/copybtn"
+        android:layout_width="102dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="28dp"
+        android:layout_weight="1"
+        android:background="@drawable/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.942"
+        app:layout_constraintStart_toStartOf="@+id/deletebtn"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
